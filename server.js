@@ -408,7 +408,7 @@ const server = http.createServer((req, res) => {
       }
     }
 
-    res.statusCode = 404;
+    res.statusCode = 200;
     res.setHeader("Content-Type", "application/json");
     res.write("Endpoint not found");
     return res.end();
@@ -417,4 +417,6 @@ const server = http.createServer((req, res) => {
 
 const port = 5000;
 
-server.listen(port, () => console.log("Server is listening on port", port));
+server.listen(port, () =>
+  console.log("Server is listening on port", process.env.port || port)
+);
